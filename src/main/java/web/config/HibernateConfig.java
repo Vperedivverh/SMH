@@ -28,7 +28,6 @@ public class HibernateConfig {
         this.env = env;
     }
 
-
     private Properties properties() {
         Properties prop = new Properties();
         prop.put("hibernate.show_sql", env.getRequiredProperty("hibernate.show_sql"));
@@ -46,7 +45,6 @@ public class HibernateConfig {
         dataSource.setPassword(env.getRequiredProperty("db.password"));
         return dataSource;
     }
-
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
@@ -69,6 +67,4 @@ public class HibernateConfig {
     public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
         return new PersistenceExceptionTranslationPostProcessor();
     }
-
-
 }

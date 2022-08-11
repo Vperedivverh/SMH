@@ -2,11 +2,9 @@ package web.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-
-
 public class AppInit extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
-    protected Class<?>[] getRootConfigClasses()  {
+    protected Class<?>[] getRootConfigClasses() {
         return new Class[]{HibernateConfig.class};
     }
 

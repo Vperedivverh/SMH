@@ -8,14 +8,12 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Component
-
 public class UsersDAOImpl implements UsersDAO {
     @PersistenceContext
     private EntityManager entityManager;
 
     @Override
     public List<User> getAllUsers() {
-
         return entityManager.createQuery("select a from User a", User.class).getResultList();
     }
 
@@ -35,16 +33,11 @@ public class UsersDAOImpl implements UsersDAO {
     }
 
     @Override
-    public void updateUser(long id, User updatedUser) {
-        User userToBeUpdated;
-        userToBeUpdated = getUserById(id);
-        userToBeUpdated.setName(updatedUser.getName());
-        userToBeUpdated.setSurname(updatedUser.getSurname());
-        entityManager.merge(userToBeUpdated);
+    public void updateUser(long id, User user) {
+        user.setId(id);
+        entityManager.merge(user);
+        //делал временную переменную  по подобию примера у Алишева или кого то ещё, точно не помню.
+        // если просто положить user  в merge, ему присваивается новый id и мы получаем в таблицу нового юзера.
+        //я добавил сеттер для id и тут его применил.
     }
-
-
-
-
-
 }
